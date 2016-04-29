@@ -11,13 +11,14 @@ type TimingPipe struct {
 }
 
 // NewTimingPipe creates a new timing pipe
-func NewTimingPipe(timedPipe Pipe, callback func(begin time.Time, duration time.Duration)) *TimingPipe {
+func NewTimingPipe(timedPipe Pipe, callback func(begin time.Time, duration time.Duration)) Pipe {
 	return &TimingPipe{
 		timedPipe: timedPipe,
 		callback:  callback,
 	}
 }
 
+// Process pipe input
 func (t *TimingPipe) Process(in chan Data) chan Data {
 	out := make(chan Data)
 	go func() {
