@@ -1,7 +1,6 @@
 package pipeline
 
 import (
-	"bufio"
 	"os"
 	"testing"
 	"time"
@@ -38,12 +37,12 @@ func TestTimingPipeProcess(t *testing.T) {
 }
 
 func ExampleTimingPipe() {
-	bout := bufio.NewWriter(os.Stdout)
+	os.Stdout.Sync()
 	timingCallbackFoo := func(begin time.Time, duration time.Duration) {
-		bout.WriteString("foo")
+		os.Stdout.WriteString("foo")
 	}
 	timingCallbackBar := func(begin time.Time, duration time.Duration) {
-		bout.WriteString("bar")
+		os.Stdout.WriteString("bar")
 	}
 
 	pipes := NewPipeline(
@@ -59,6 +58,5 @@ func ExampleTimingPipe() {
 	pipes.Dequeue(func(data Data) {
 		pipeOutput = data
 	})
-	bout.Flush()
 	// Output: foobar
 }
