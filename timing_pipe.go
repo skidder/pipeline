@@ -18,7 +18,7 @@ func NewTimingPipe(timedPipe Pipe, callback func(begin time.Time, duration time.
 	}
 }
 
-func (t *TimingPipe) Process(in chan Data) chan Data {
+func (t TimingPipe) Process(in chan Data) chan Data {
 	out := make(chan Data)
 	go func() {
 		defer close(out)
