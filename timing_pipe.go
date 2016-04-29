@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// TimingPipe invokes a custom callback function with the amount of time required to run a specific Pipe
 type TimingPipe struct {
 	timedPipe Pipe
 	callback  func(begin time.Time, duration time.Duration)
