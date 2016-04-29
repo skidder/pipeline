@@ -36,7 +36,7 @@ func TestTimingPipeProcess(t *testing.T) {
 
 }
 
-func ExampleTimingPipe() {
+func ExampleNewTimingPipe() {
 	os.Stdout.Sync()
 	timingCallbackFoo := func(begin time.Time, duration time.Duration) {
 		os.Stdout.WriteString("foo")

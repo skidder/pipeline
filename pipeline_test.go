@@ -134,7 +134,7 @@ func TestDeleteTempDirsEmpty(t *testing.T) {
 	}
 }
 
-func ExamplePipeline() {
+func ExampleNewPipeline() {
 	pipes := NewPipeline(&PassThroughPipe{}, &PassThroughPipe{}, &PassThroughPipe{})
 
 	go func() {
