@@ -30,7 +30,7 @@ func TestTimingPipeProcess(t *testing.T) {
 			pipeOutput = data
 		})
 		if pipeOutput.Payload.(string) != "foo" {
-			t.Error("%s: pipeline paylaod string had incorrect value: %s", name, pipeOutput.Payload.(string))
+			t.Errorf("%s: pipeline paylaod string had incorrect value: %s", name, pipeOutput.Payload.(string))
 		}
 	}
 
@@ -54,9 +54,7 @@ func ExampleNewTimingPipe() {
 		pipes.Close()
 	}()
 
-	var pipeOutput Data
 	pipes.Dequeue(func(data Data) {
-		pipeOutput = data
 	})
 	// Output: foobar
 }

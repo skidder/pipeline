@@ -39,20 +39,20 @@ func TestPipeline(t *testing.T) {
 func TestCreateTempDir(t *testing.T) {
 	var tmpBaseDir string
 	tests := map[string]*CreateTempDirTestCase{
-		"Empty Temp Base Directory": &CreateTempDirTestCase{
+		"Empty Temp Base Directory": {
 			expectError:   false,
 			expectDirName: true,
 			setupFunc:     func() { tmpBaseDir = "" },
 			teardownFunc:  func() {},
 		},
-		"Whitespace Temp Base Directory": &CreateTempDirTestCase{
+		"Whitespace Temp Base Directory": {
 			tmpDir:        "  ",
 			expectError:   false,
 			expectDirName: true,
 			setupFunc:     func() { tmpBaseDir = " " },
 			teardownFunc:  func() {},
 		},
-		"Permission Error on Temp Base Directory": &CreateTempDirTestCase{
+		"Permission Error on Temp Base Directory": {
 			expectError:   true,
 			expectDirName: false,
 			setupFunc: func() {
@@ -67,7 +67,7 @@ func TestCreateTempDir(t *testing.T) {
 				os.RemoveAll(tmpBaseDir)
 			},
 		},
-		"Success": &CreateTempDirTestCase{
+		"Success": {
 			expectError:   false,
 			expectDirName: true,
 			setupFunc: func() {
